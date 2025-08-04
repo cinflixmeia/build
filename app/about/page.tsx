@@ -7,22 +7,22 @@ import { ArrowRight, DollarSign, Shield, TrendingUp, Users, Globe, Award, Zap, F
 
 // Local poster images mapping
 const posterImages = [
-  "/posters/continuum-dvd-movie-cover.webp",
-  "/posters/torch-song-trilogy-movie-poster.webp",
-  "/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
-  "/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
-  "/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
-  "/posters/rugrats-movie-poster.webp",
-  "/posters/the-big-clock-french-movie-poster.webp",
-  "/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
-  "/posters/the-harder-they-fall-movie-poster.webp",
-  "/posters/hale-and-pace-british-dvd-movie-cover.webp",
-  "/posters/the-hundred-foot-journey-german-movie-poster.webp",
-  "/posters/liebe-ist-das-schonste-geschenk-german-movie-cover.webp",
-  "/posters/egzorcizam-croatian-movie-poster.webp",
-  "/posters/the-flash-brazilian-movie-poster.webp",
-  "/posters/the-apartment-movie-cover-sm.webp",
-  "/posters/superman-hungarian-movie-poster-sm.webp"
+  "https://cinflixmeia.github.io/build/posters/continuum-dvd-movie-cover.webp",
+  "https://cinflixmeia.github.io/build/posters/torch-song-trilogy-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
+  "https://cinflixmeia.github.io/build/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/rugrats-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/the-big-clock-french-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
+  "https://cinflixmeia.github.io/build/posters/the-harder-they-fall-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/hale-and-pace-british-dvd-movie-cover.webp",
+  "https://cinflixmeia.github.io/build/posters/the-hundred-foot-journey-german-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/liebe-ist-das-schonste-geschenk-german-movie-cover.webp",
+  "https://cinflixmeia.github.io/build/posters/egzorcizam-croatian-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/the-flash-brazilian-movie-poster.webp",
+  "https://cinflixmeia.github.io/build/posters/the-apartment-movie-cover-sm.webp",
+  "https://cinflixmeia.github.io/build/posters/superman-hungarian-movie-poster-sm.webp"
 ]
 
 // Function to get poster image with cycling

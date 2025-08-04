@@ -24,7 +24,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-8">
-          <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
+          <a href="/build/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
             <img 
               src="https://cinflixmeia.github.io/build/Logos/lightlogo.png" 
               alt="Cinflix Logo" 

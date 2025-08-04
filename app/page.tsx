@@ -1033,7 +1033,7 @@ export default function Home() {
 
   const handleOpenFullPage = (movieId: string) => {
     setIsModalOpen(false)
-    router.push(`/movie/${movieId}`)
+    router.push(`/build/movie/${movieId}/`)
   }
 
   return (

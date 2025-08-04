@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col space-y-8 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
           {/* Logo and Links */}
           <div className="flex flex-col space-y-6 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-12">
-            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
+            <a href="/build/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
               <img 
                 src="https://cinflixmeia.github.io/build/Logos/lightlogo.png" 
                 alt="Cinflix Logo" 
