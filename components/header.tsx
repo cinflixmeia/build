@@ -39,16 +39,16 @@ export function Header() {
           
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <a href="/buyer" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="/build/buyer/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Buyer
             </a>
-            <a href="/seller" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="/build/seller/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Seller
             </a>
-            <a href="/pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="/build/pricing/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Pricing
             </a>
-            <a href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a href="/build/about/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               About
             </a>
           </nav>
@@ -124,16 +124,16 @@ export function Header() {
           <div className="p-4 space-y-4">
             {/* Navigation Links */}
             <div className="space-y-2">
-              <a href="/buyer" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/build/buyer/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Buyer
               </a>
-              <a href="/seller" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/build/seller/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Seller
               </a>
-              <a href="/pricing" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/build/pricing/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Pricing
               </a>
-              <a href="/about" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/build/about/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 About
               </a>
             </div>
