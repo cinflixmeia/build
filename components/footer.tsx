@@ -11,12 +11,12 @@ export function Footer() {
           <div className="flex flex-col space-y-6 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-12">
             <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
               <img 
-                src="/build/Logos/lightlogo.png" 
+                src="https://cinflixmeia.github.io/build/Logos/lightlogo.png" 
                 alt="Cinflix Logo" 
                 className="h-32 w-auto dark:hidden"
               />
               <img 
-                src="/build/Logos/darklogo.png" 
+                src="https://cinflixmeia.github.io/build/Logos/darklogo.png" 
                 alt="Cinflix Logo" 
                 className="h-32 w-auto hidden dark:block"
               />

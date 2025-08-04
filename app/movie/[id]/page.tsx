@@ -10,7 +10,7 @@ const movieData = {
   "1": {
     id: "1",
     title: "The Apartment",
-    poster: "/build/posters/the-apartment-movie-cover-sm.webp",
+    poster: "https://cinflixmeia.github.io/build/posters/the-apartment-movie-cover-sm.webp",
     year: "1960",
     rating: "PG-13",
     duration: "2h 5m",
@@ -64,7 +64,7 @@ const movieData = {
   "2": {
     id: "2",
     title: "Superman",
-    poster: "/build/posters/superman-hungarian-movie-poster-sm.webp",
+    poster: "https://cinflixmeia.github.io/build/posters/superman-hungarian-movie-poster-sm.webp",
     year: "1978",
     rating: "PG",
     duration: "2h 23m",
