@@ -23,7 +23,7 @@ const featuredProjects: FeaturedProject[] = [
     genre: "Sci-Fi",
     budget: "$15M",
     region: "Global",
-    posterUrl: "/posters/continuum-dvd-movie-cover.webp"
+    posterUrl: "/build/posters/continuum-dvd-movie-cover.webp"
   },
   {
     id: "2",
@@ -32,7 +32,7 @@ const featuredProjects: FeaturedProject[] = [
     genre: "Romance",
     budget: "$8M",
     region: "Europe",
-    posterUrl: "/posters/torch-song-trilogy-movie-poster.webp"
+    posterUrl: "/build/posters/torch-song-trilogy-movie-poster.webp"
   },
   {
     id: "3",
@@ -41,7 +41,7 @@ const featuredProjects: FeaturedProject[] = [
     genre: "Thriller",
     budget: "$12M",
     region: "North America",
-    posterUrl: "/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp"
+    posterUrl: "/build/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp"
   },
   {
     id: "4",
@@ -50,7 +50,7 @@ const featuredProjects: FeaturedProject[] = [
     genre: "Fantasy",
     budget: "$20M",
     region: "Middle East",
-    posterUrl: "/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp"
+    posterUrl: "/build/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp"
   }
 ]
 

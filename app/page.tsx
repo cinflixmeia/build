@@ -14,22 +14,22 @@ import { ArrowRight, Play, DollarSign, Film, Tv, Music, BookOpen, Globe, Star, A
 
 // Local poster images mapping
 const posterImages = [
-  "/posters/continuum-dvd-movie-cover.webp",
-  "/posters/torch-song-trilogy-movie-poster.webp",
-  "/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
-  "/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
-  "/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
-  "/posters/rugrats-movie-poster.webp",
-  "/posters/the-big-clock-french-movie-poster.webp",
-  "/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
-  "/posters/the-harder-they-fall-movie-poster.webp",
-  "/posters/hale-and-pace-british-dvd-movie-cover.webp",
-  "/posters/the-hundred-foot-journey-german-movie-poster.webp",
-  "/posters/liebe-ist-das-schonste-geschenk-german-movie-cover.webp",
-  "/posters/egzorcizam-croatian-movie-poster.webp",
-  "/posters/the-flash-brazilian-movie-poster.webp",
-  "/posters/the-apartment-movie-cover-sm.webp",
-  "/posters/superman-hungarian-movie-poster-sm.webp"
+  "/build/posters/continuum-dvd-movie-cover.webp",
+  "/build/posters/torch-song-trilogy-movie-poster.webp",
+  "/build/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
+  "/build/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
+  "/build/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
+  "/build/posters/rugrats-movie-poster.webp",
+  "/build/posters/the-big-clock-french-movie-poster.webp",
+  "/build/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
+  "/build/posters/the-harder-they-fall-movie-poster.webp",
+  "/build/posters/hale-and-pace-british-dvd-movie-cover.webp",
+  "/build/posters/the-hundred-foot-journey-german-movie-poster.webp",
+  "/build/posters/liebe-ist-das-schonste-geschenk-german-movie-cover.webp",
+  "/build/posters/egzorcizam-croatian-movie-poster.webp",
+  "/build/posters/the-flash-brazilian-movie-poster.webp",
+  "/build/posters/the-apartment-movie-cover-sm.webp",
+  "/build/posters/superman-hungarian-movie-poster-sm.webp"
 ]
 
 // Function to get poster image with cycling
@@ -40,7 +40,7 @@ const movieData = {
   "1": {
     id: "1",
     title: "INDIA'S BIGGEST FOODIE",
-    poster: "/posters/continuum-dvd-movie-cover.webp",
+    poster: "/build/posters/continuum-dvd-movie-cover.webp",
     year: "2024",
     rating: "TV-PG",
     duration: "45 min",
@@ -57,7 +57,7 @@ const movieData = {
   "2": {
     id: "2",
     title: "VINA के वो सात दिन",
-    poster: "/posters/torch-song-trilogy-movie-poster.webp",
+    poster: "/build/posters/torch-song-trilogy-movie-poster.webp",
     year: "2024",
     rating: "TV-14",
     duration: "120 min",
@@ -74,7 +74,7 @@ const movieData = {
   "3": {
     id: "3",
     title: "I-POP ICONS GETTING CLOSER TO BADSHAH",
-    poster: "/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
+    poster: "/build/posters/guns-of-the-magnificent-seven-italian-movie-cover.webp",
     year: "2024",
     rating: "TV-PG",
     duration: "90 min",
@@ -91,7 +91,7 @@ const movieData = {
   "4": {
     id: "4",
     title: "Pati Patni Aur PANGA",
-    poster: "/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
+    poster: "/build/posters/a-e-i-o-u-das-schnelle-alphabet-der-liebe-german-movie-poster.webp",
     year: "2024",
     rating: "TV-14",
     duration: "60 min",
@@ -108,7 +108,7 @@ const movieData = {
   "5": {
     id: "5",
     title: "GMO MEDIA PRESENTS MAKING OF INCREDIBLE BRANDS",
-    poster: "/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
+    poster: "/build/posters/hasse-tage-en-karlekshistoria-swedish-movie-poster.webp",
     year: "2024",
     rating: "TV-G",
     duration: "75 min",
@@ -125,7 +125,7 @@ const movieData = {
   "6": {
     id: "6",
     title: "SENNA हिन्दी",
-    poster: "/posters/rugrats-movie-poster.webp",
+    poster: "/build/posters/rugrats-movie-poster.webp",
     year: "2024",
     rating: "TV-PG",
     duration: "150 min",
@@ -142,7 +142,7 @@ const movieData = {
   "7": {
     id: "7",
     title: "REFUGEE",
-    poster: "/posters/the-big-clock-french-movie-poster.webp",
+    poster: "/build/posters/the-big-clock-french-movie-poster.webp",
     year: "2024",
     rating: "TV-14",
     duration: "135 min",
@@ -159,7 +159,7 @@ const movieData = {
   "8": {
     id: "8",
     title: "YELLOW HEART",
-    poster: "/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
+    poster: "/build/posters/mille-dollari-sul-nero-german-dvd-movie-cover.webp",
     year: "2024",
     rating: "TV-MA",
     duration: "110 min",
