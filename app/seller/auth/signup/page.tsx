@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Eye, EyeOff, Mail, Lock, ArrowLeft, Film, User, Building, Phone, Globe } from "lucide-react"
 import { toast } from "sonner"
+import { signUpWithEmailPassword } from "@/lib/auth"
 
 export default function SellerSignupPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -28,14 +29,20 @@ export default function SellerSignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
+    try {
+      await signUpWithEmailPassword({
+        email: formData.email,
+        password: formData.password,
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+      })
       toast.success("Account created successfully", { description: `Welcome, ${formData.firstName}` })
-      // Redirect to dashboard after successful signup
       window.location.href = "/seller/dashboard"
-    }, 1000)
+    } catch (err: any) {
+      const message = err?.message || "Signup failed"
+      toast.error(message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

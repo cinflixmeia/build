@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Mail, ArrowLeft, Film, CheckCircle } from "lucide-react"
 import { toast } from "sonner"
+import { account } from "@/lib/appwrite"
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
@@ -17,13 +18,18 @@ export default function ForgotPasswordPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
+    try {
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
+      // Appwrite requires a redirect URL for email recovery flow
+      await account.createRecovery(email, `${baseUrl}/seller/auth/login`)
       setIsSubmitted(true)
       toast.success("Password reset email sent", { description: `Email sent to ${email}` })
-    }, 1000)
+    } catch (err: any) {
+      const message = err?.message || "Failed to send reset email"
+      toast.error(message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   if (isSubmitted) {
