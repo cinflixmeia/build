@@ -17,6 +17,7 @@ import {
 import { ThemeToggle } from "@/components/theme-toggle"
 import { RoleSwitch } from "@/components/role-switcher"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -29,17 +30,23 @@ export function Header() {
         {/* Logo */}
         <div className="flex items-center space-x-8">
           <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
-            {/* Show dark-mark on light theme */}
-            <img
-              src="/Logos/logo-dark.svg"
+            {/* Light theme logo */}
+            <Image
+              src="/Logos/lightlogo.png"
               alt="Cinflix"
+              width={256}
+              height={64}
               className="h-16 w-auto dark:hidden"
+              priority
             />
-            {/* Show light-mark on dark theme */}
-            <img
-              src="/Logos/logo-light.svg"
+            {/* Dark theme logo */}
+            <Image
+              src="/Logos/darklogo.png"
               alt="Cinflix"
+              width={256}
+              height={64}
               className="h-16 w-auto hidden dark:block"
+              priority
             />
           </Link>
           
