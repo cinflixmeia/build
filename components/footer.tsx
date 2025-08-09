@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Github, Twitter, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -23,25 +24,25 @@ export function Footer() {
             </a>
             
             <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors duration-200 font-medium">About</a>
-              <a href="#" className="hover:text-foreground transition-colors duration-200 font-medium">FAQ</a>
-              <a href="#" className="hover:text-foreground transition-colors duration-200 font-medium">Legal</a>
-              <a href="#" className="hover:text-foreground transition-colors duration-200 font-medium">Privacy</a>
+              <Link href="/about" className="hover:text-foreground transition-colors duration-200 font-medium">About</Link>
+              <Link href="/faq" className="hover:text-foreground transition-colors duration-200 font-medium">FAQ</Link>
+              <Link href="/legal" className="hover:text-foreground transition-colors duration-200 font-medium">Legal</Link>
+              <Link href="/privacy" className="hover:text-foreground transition-colors duration-200 font-medium">Privacy</Link>
             </div>
           </div>
 
           {/* Social Icons */}
           <div className="flex items-center justify-center sm:justify-end space-x-3">
-            <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
+            <Button variant="ghost" size="icon" aria-label="Social" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
               <Twitter className="h-5 w-5 sm:h-4 sm:w-4 group-hover:scale-110 transition-transform duration-200" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
+            <Button variant="ghost" size="icon" aria-label="Social" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
               <Linkedin className="h-5 w-5 sm:h-4 sm:w-4 group-hover:scale-110 transition-transform duration-200" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
+            <Button variant="ghost" size="icon" aria-label="Social" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
               <Github className="h-5 w-5 sm:h-4 sm:w-4 group-hover:scale-110 transition-transform duration-200" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
+            <Button variant="ghost" size="icon" aria-label="Social" className="h-10 w-10 sm:h-9 sm:w-9 rounded-full hover:bg-muted/50 transition-all duration-200 group">
               <Mail className="h-5 w-5 sm:h-4 sm:w-4 group-hover:scale-110 transition-transform duration-200" />
             </Button>
           </div>

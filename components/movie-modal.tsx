@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { X, Play, Star, Clock, Calendar, Users, Globe, ArrowRight, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -32,6 +32,41 @@ interface MovieModalProps {
 }
 
 export function MovieModal({ movie, isOpen, onClose, onOpenFullPage }: MovieModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  // Simple focus trap
+  useEffect(() => {
+    if (!isOpen) return
+    const node = modalRef.current
+    if (!node) return
+
+    const focusable: HTMLElement[] = Array.from(
+      node.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    )
+
+    focusable[0]?.focus()
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [isOpen])
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false)
 
   if (!movie) {
@@ -43,7 +78,7 @@ export function MovieModal({ movie, isOpen, onClose, onOpenFullPage }: MovieModa
   }
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+    <div role="dialog" aria-modal="true" ref={modalRef} className="fixed inset-0 z-[9999] flex items-center justify-center">
       <div className="fixed inset-0 bg-black/50" onClick={onClose}></div>
       <div className="relative bg-white dark:bg-gray-900 rounded-lg p-6 max-w-4xl max-h-[90vh] overflow-y-auto">
         {/* Header */}

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -92,21 +93,35 @@ export default function SellerPage() {
                 We got you. Our dedicated team is here to make everything as hassle-free as possible for you to get started and grow your revenues.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8 w-full sm:w-auto">
-                <Button 
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg sm:text-xl font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
-                >
-                  <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                  Join Cinflix
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white/30 text-white hover:bg-white/10 text-lg sm:text-xl font-semibold px-8 py-4 h-auto backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-200 group dark:border-white/30 dark:text-white dark:hover:bg-white/10 border-gray-200 text-gray-900 hover:bg-gray-100/80"
-                >
-                  <Users className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                  Talk to the Team
-                </Button>
+                <Link href="/seller/auth/signup">
+                  <Button 
+                    size="lg" 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg sm:text-xl font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
+                  >
+                    <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                    Join Cinflix
+                  </Button>
+                </Link>
+                <Link href="/seller/auth/login">
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-white/30 text-white hover:bg-white/10 text-lg sm:text-xl font-semibold px-8 py-4 h-auto backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-200 group dark:border-white/30 dark:text-white dark:hover:bg-white/10 border-gray-200 text-gray-900 hover:bg-gray-100/80"
+                  >
+                    <Users className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/seller/dashboard">
+                  <Button 
+                    size="lg" 
+                    variant="secondary" 
+                    className="border-white/30 text-white hover:bg-white/10 text-lg sm:text-xl font-semibold px-8 py-4 h-auto backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-200 group dark:border-white/30 dark:text-white dark:hover:bg-white/10 border-gray-200 text-gray-900 hover:bg-gray-100/80"
+                  >
+                    <BarChart3 className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                    Go to Dashboard
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="flex-1 hidden md:block" />
@@ -129,10 +144,12 @@ export default function SellerPage() {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Merging cutting edge tech, with hands on expert support, Cinflix gives you access to buyers in every corner of the globe - from established broadcasters to the latest emerging platforms - all from the one easy to use location.
                 </p>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group">
-                  <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                  Join Cinflix
-                </Button>
+                <Link href="/seller/auth/signup">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group">
+                    <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                    Join Cinflix
+                  </Button>
+                </Link>
               </div>
 
               <div className="relative">
@@ -351,21 +368,25 @@ export default function SellerPage() {
               Still need more reasons? Speak to our team, today...
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
-              >
-                <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                Join Cinflix
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
-              >
-                <Users className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-                Talk to the Team
-              </Button>
+              <Link href="/seller/auth/signup">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
+                >
+                  <DollarSign className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                  Join Cinflix
+                </Button>
+              </Link>
+              <Link href="/seller/auth/login">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="text-lg font-semibold px-8 py-4 h-auto shadow-xl hover:shadow-2xl transition-all duration-200 group"
+                >
+                  <Users className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                  Sign In
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

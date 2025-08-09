@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -122,6 +124,15 @@ export default function BuyerPage() {
                 >
                   <Users className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
                   Talk to the Team
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white/30 text-white hover:bg-white/10 text-lg sm:text-xl font-semibold px-8 py-4 h-auto backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-200 group dark:border-white/30 dark:text-white dark:hover:bg-white/10 border-gray-200 text-gray-900 hover:bg-gray-100/80"
+                  onClick={() => window.location.href = '/buyer/dashboard'}
+                >
+                  <ArrowRight className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                  Go to Dashboard
                 </Button>
               </div>
             </div>

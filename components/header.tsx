@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Search, Bell, User, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,69 +15,90 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { RoleSwitch } from "@/components/role-switcher"
+import { useTheme } from "next-themes"
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const { setTheme, theme } = useTheme()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 glass">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-[72px] items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-8">
-          <a href="/build/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
-            <img 
-              src="https://cinflixmeia.github.io/build/Logos/lightlogo.png" 
-              alt="Cinflix Logo" 
-              className="h-32 w-auto dark:hidden"
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
+            {/* Show dark-mark on light theme */}
+            <img
+              src="/Logos/logo-dark.svg"
+              alt="Cinflix"
+              className="h-16 w-auto dark:hidden"
             />
-            <img 
-              src="https://cinflixmeia.github.io/build/Logos/darklogo.png" 
-              alt="Cinflix Logo" 
-              className="h-32 w-auto hidden dark:block"
+            {/* Show light-mark on dark theme */}
+            <img
+              src="/Logos/logo-light.svg"
+              alt="Cinflix"
+              className="h-16 w-auto hidden dark:block"
             />
-          </a>
+          </Link>
           
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="/build/buyer/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <nav className="hidden lg:flex items-center space-x-10 ml-4" aria-label="Primary">
+            <Link href="/buyer" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Buyer
-            </a>
-            <a href="/build/seller/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            </Link>
+            <Link href="/seller" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Seller
-            </a>
-            <a href="/build/pricing/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            </Link>
+            <Link href="/pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               Pricing
-            </a>
-            <a href="/build/about/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+            </Link>
+            <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
               About
-            </a>
+            </Link>
           </nav>
         </div>
 
         {/* Desktop Right side */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center gap-2 sm:gap-4">
           {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative h-9 w-9 rounded-full">
+          <Button variant="ghost" size="icon" aria-label="Notifications" className="relative h-9 w-9 rounded-full">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-primary animate-pulse"></span>
           </Button>
 
-          {/* Theme Toggle */}
-          <ThemeToggle />
+          {/* Theme Toggle Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Theme" className="h-9 w-9">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Theme</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <RoleSwitch />
 
           {/* Sign Up/Sign In Button */}
-          <Button variant="destructive" className="font-semibold">
-            Sign Up | Sign In
-          </Button>
+          <Link href="/seller/auth/signup">
+            <Button variant="destructive" className="font-semibold">
+              Sign Up | Sign In
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Right side */}
-        <div className="flex md:hidden items-center space-x-2">
+        <div className="flex md:hidden items-center gap-2">
           {/* Mobile Search Toggle */}
-          <Button 
+           <Button 
             variant="ghost" 
-            size="icon" 
+            size="icon" aria-label="Search" 
             onClick={() => setIsSearchOpen(!isSearchOpen)}
             className="h-9 w-9 rounded-full"
           >
@@ -84,18 +106,32 @@ export function Header() {
           </Button>
 
           {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative h-9 w-9 rounded-full">
+          <Button variant="ghost" size="icon" aria-label="Notifications" className="relative h-9 w-9 rounded-full">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-primary animate-pulse"></span>
           </Button>
 
-          {/* Theme Toggle */}
-          <ThemeToggle />
+          {/* Theme Toggle Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Theme" className="h-9 w-9">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Theme</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <RoleSwitch />
 
           {/* Mobile menu button */}
-          <Button 
+           <Button 
             variant="ghost" 
-            size="icon" 
+            size="icon" aria-label="Mobile Menu" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="h-9 w-9 rounded-full"
           >
@@ -124,24 +160,26 @@ export function Header() {
           <div className="p-4 space-y-4">
             {/* Navigation Links */}
             <div className="space-y-2">
-              <a href="/build/buyer/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link href="/buyer" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Buyer
-              </a>
-              <a href="/build/seller/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/seller" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Seller
-              </a>
-              <a href="/build/pricing/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/pricing" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Pricing
-              </a>
-              <a href="/build/about/" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/about" className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
                 About
-              </a>
+              </Link>
             </div>
 
             <div className="pt-4 border-t border-border/40">
-              <Button variant="destructive" className="w-full font-semibold">
-                Sign Up | Sign In
-              </Button>
+              <Link href="/seller/auth/signup">
+                <Button variant="destructive" className="w-full font-semibold">
+                  Sign Up | Sign In
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
