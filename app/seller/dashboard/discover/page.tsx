@@ -13,6 +13,8 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Play, DollarSign, Film, Tv, Music, BookOpen, Globe, Star, Award, Heart, Zap, Users, Camera, Mic, Video, Search, Filter, Plus, Edit, Trash2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { getCurrentUser } from "@/lib/auth"
+import { listMyContents } from "@/lib/content"
 
 // Local poster images mapping
 const posterImages = [
@@ -459,15 +461,42 @@ export default function DiscoverPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem('sellerContents')
-      const contents = raw ? JSON.parse(raw) : []
-      setMyContents(contents)
-    } catch (e) {
-      setMyContents([])
-    }
-    const t = setTimeout(() => setLoading(false), 600)
-    return () => clearTimeout(t)
+    (async () => {
+      try {
+        const user = await getCurrentUser()
+        if (user) {
+          const docs = await listMyContents(user.$id)
+          const mapped = docs.map((d) => ({
+            id: d.$id,
+            formData: {
+              title: d.title,
+              description: d.description,
+              genre: d.genre,
+              year: d.year,
+            },
+            fileMeta: {
+              videoName: d.videoFileId ? 'Uploaded' : undefined,
+              posterName: d.posterFileId ? 'Uploaded' : undefined,
+            },
+            createdAt: new Date(d.$createdAt).getTime(),
+            updatedAt: new Date(d.$updatedAt).getTime(),
+          }))
+          setMyContents(mapped)
+        } else {
+          // fallback to local
+          const raw = localStorage.getItem('sellerContents')
+          const contents = raw ? JSON.parse(raw) : []
+          setMyContents(contents)
+        }
+      } catch {
+        const raw = localStorage.getItem('sellerContents')
+        const contents = raw ? JSON.parse(raw) : []
+        setMyContents(contents)
+      } finally {
+        const t = setTimeout(() => setLoading(false), 600)
+        return () => clearTimeout(t)
+      }
+    })()
   }, [])
 
   const handleMovieClick = (movieId: string) => {

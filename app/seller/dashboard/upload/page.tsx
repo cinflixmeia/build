@@ -18,7 +18,9 @@ import {
  } from "lucide-react"
  import { toast } from "sonner"
  import Link from "next/link"
- import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
+import { getCurrentUser } from "@/lib/auth"
+import { createContentDocument } from "@/lib/content"
 
 function UploadContentInner() {
   const router = useRouter()
@@ -216,56 +218,32 @@ function UploadContentInner() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsUploading(true)
+    setUploadProgress(10)
+    try {
+      const user = await getCurrentUser()
+      if (!user) {
+        toast.error('Please login to upload content')
+        setIsUploading(false)
+        return
+      }
 
-    const interval = setInterval(() => {
-      setUploadProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          setIsUploading(false)
-
-          const finalMeta = {
-            videoName: uploadedFiles.video?.name || fileMeta.videoName,
-            posterName: uploadedFiles.poster?.name || fileMeta.posterName,
-            subtitleNames: Array.from(new Set([...(fileMeta.subtitleNames || []), ...(uploadedFiles.subtitles?.map(f => f.name) || [])]))
-          }
-
-          try {
-            const raw = localStorage.getItem('sellerContents')
-            const contents: any[] = raw ? JSON.parse(raw) : []
-            if (isEditMode && contentId) {
-              const idx = contents.findIndex(c => c.id === contentId)
-              if (idx >= 0) {
-                contents[idx] = {
-                  ...contents[idx],
-                  formData,
-                  fileMeta: finalMeta,
-                  updatedAt: Date.now()
-                }
-              }
-            } else {
-              const newId = Date.now().toString()
-              contents.unshift({
-                id: newId,
-                formData,
-                fileMeta: finalMeta,
-                createdAt: Date.now(),
-                updatedAt: Date.now()
-              })
-            }
-            localStorage.setItem('sellerContents', JSON.stringify(contents))
-            localStorage.removeItem('uploadDraft')
-            toast.success(isEditMode ? 'Content updated' : 'Content uploaded')
-            router.push('/seller/dashboard/discover')
-          } catch (err) {
-            console.error('Failed to save content', err)
-            toast.error('Failed to save content')
-          }
-
-          return 100
-        }
-        return prev + 10
+      // Create document in Appwrite (files optional)
+      const doc = await createContentDocument({
+        form: formData,
+        ownerId: user.$id,
+        posterFile: uploadedFiles.poster,
+        videoFile: uploadedFiles.video,
       })
-    }, 400)
+      setUploadProgress(100)
+      toast.success(isEditMode ? 'Content updated' : 'Content uploaded')
+      localStorage.removeItem('uploadDraft')
+      router.push('/seller/dashboard/discover')
+    } catch (err: any) {
+      const message = err?.message || 'Failed to save content'
+      toast.error(message)
+    } finally {
+      setIsUploading(false)
+    }
   }
 
   const saveDraft = () => {
