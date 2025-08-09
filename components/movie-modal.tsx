@@ -151,17 +151,17 @@ export function MovieModal({ movie, isOpen, onClose, onOpenFullPage }: MovieModa
           {/* Right Column - Details */}
           <div className="space-y-6">
             {/* Primary actions moved to the top-right */}
-            <div className="flex justify-end gap-2">
+            <div className="flex flex-col sm:flex-row sm:justify-end gap-2 w-full">
               <Button 
                 onClick={() => onOpenFullPage(movie.id)}
-                className="bg-primary hover:bg-primary/90"
+                className="bg-primary hover:bg-primary/90 w-full sm:w-auto"
                 aria-label="View Full Details"
                 size="sm"
               >
                 <ArrowRight className="h-4 w-4 mr-2" />
                 View Full Details
               </Button>
-              <Button variant="outline" size="sm" aria-label="Contact Seller">
+              <Button variant="outline" size="sm" aria-label="Contact Seller" className="w-full sm:w-auto">
                 <Users className="h-4 w-4 mr-2" />
                 Contact Seller
               </Button>
