@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { ContentCarousel } from "@/components/content-carousel"
 import { CategoryCarousel } from "@/components/category-carousel"
 import { MovieModal } from "@/components/movie-modal"
@@ -358,6 +359,7 @@ export default function BuyerDiscoverPage() {
   const [selectedMovie, setSelectedMovie] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   const handleMovieClick = (movieId: string) => {
     const movie = movieData[movieId as keyof typeof movieData]
@@ -464,7 +466,9 @@ export default function BuyerDiscoverPage() {
         movie={selectedMovie}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onOpenFullPage={() => {}}
+        onOpenFullPage={(movieId: string) => {
+          router.push(`/build/movie/${movieId}/`)
+        }}
       />
     </div>
   )
