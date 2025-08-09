@@ -1,45 +1,3 @@
-name: Build and publish /build for GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Build (Next output: export)
-        run: npm run build
-
-      - name: Prepare static build folder (/build)
-        run: |
-          rm -rf build
-          mkdir -p build
-          rsync -a .next/server/app/ build/
-          touch build/.nojekyll
-
-      - name: Commit /build to main
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "CI: publish static site to /build for GitHub Pages"
-          file_pattern: build/**
-
 name: Deploy to GitHub Pages
 
 on:
@@ -83,7 +41,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./out
+        path: .next/server/app
         
     - name: Deploy to GitHub Pages
       id: deployment
