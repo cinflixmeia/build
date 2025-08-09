@@ -31,6 +31,17 @@ jobs:
         
     - name: Install dependencies
       run: npm ci
+
+    - name: Configure env for Next.js (Appwrite)
+      shell: bash
+      run: |
+        # Prefer GitHub Action Variables if provided; otherwise use sensible defaults
+        : "${NEXT_PUBLIC_APPWRITE_ENDPOINT:=${{ vars.NEXT_PUBLIC_APPWRITE_ENDPOINT }}}"
+        : "${NEXT_PUBLIC_APPWRITE_PROJECT_ID:=${{ vars.NEXT_PUBLIC_APPWRITE_PROJECT_ID }}}"
+        if [ -z "$NEXT_PUBLIC_APPWRITE_ENDPOINT" ]; then NEXT_PUBLIC_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"; fi
+        if [ -z "$NEXT_PUBLIC_APPWRITE_PROJECT_ID" ]; then NEXT_PUBLIC_APPWRITE_PROJECT_ID="project-fra-6897812a000617c52694"; fi
+        printf "NEXT_PUBLIC_APPWRITE_ENDPOINT=%s\nNEXT_PUBLIC_APPWRITE_PROJECT_ID=%s\n" "$NEXT_PUBLIC_APPWRITE_ENDPOINT" "$NEXT_PUBLIC_APPWRITE_PROJECT_ID" > .env
+        echo "Wrote .env with Appwrite config"
       
     - name: Build
       run: npm run build
