@@ -30,12 +30,12 @@ export function Header() {
         <div className="flex items-center space-x-8">
           <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
             <img
-              src="https://cinflixmeia.github.io/build/Logos/lightlogo.png?v=2"
+              src="https://cinflixmeia.github.io/build/Logos/logo-light.svg?v=3"
               alt="Cinflix"
               className="h-16 w-auto dark:hidden"
             />
             <img
-              src="https://cinflixmeia.github.io/build/Logos/darklogo.png?v=2"
+              src="https://cinflixmeia.github.io/build/Logos/logo-dark.svg?v=3"
               alt="Cinflix"
               className="h-16 w-auto hidden dark:block"
             />
