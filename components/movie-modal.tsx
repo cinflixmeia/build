@@ -150,6 +150,22 @@ export function MovieModal({ movie, isOpen, onClose, onOpenFullPage }: MovieModa
 
           {/* Right Column - Details */}
           <div className="space-y-6">
+            {/* Primary actions moved to the top-right */}
+            <div className="flex justify-end gap-2">
+              <Button 
+                onClick={() => onOpenFullPage(movie.id)}
+                className="bg-primary hover:bg-primary/90"
+                aria-label="View Full Details"
+                size="sm"
+              >
+                <ArrowRight className="h-4 w-4 mr-2" />
+                View Full Details
+              </Button>
+              <Button variant="outline" size="sm" aria-label="Contact Seller">
+                <Users className="h-4 w-4 mr-2" />
+                Contact Seller
+              </Button>
+            </div>
             {/* Genres */}
             <div className="flex flex-wrap gap-2">
               {movie.genre.map((genre, index) => (
@@ -213,20 +229,7 @@ export function MovieModal({ movie, isOpen, onClose, onOpenFullPage }: MovieModa
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t mt-6">
-          <Button 
-            onClick={() => onOpenFullPage(movie.id)}
-            className="flex-1 bg-primary hover:bg-primary/90"
-          >
-            <ArrowRight className="h-4 w-4 mr-2" />
-            View Full Details
-          </Button>
-          <Button variant="outline" className="flex-1">
-            <Users className="h-4 w-4 mr-2" />
-            Contact Seller
-          </Button>
-        </div>
+        {/* (Buttons moved to header of right column) */}
       </div>
     </div>
   )
