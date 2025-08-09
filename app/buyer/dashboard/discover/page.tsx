@@ -467,7 +467,7 @@ export default function BuyerDiscoverPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onOpenFullPage={(movieId: string) => {
-          router.push(`/build/movie/${movieId}/`)
+          router.push(`/movie/${movieId}/`)
         }}
       />
     </div>
